@@ -1,0 +1,139 @@
+<html>
+<head>
+    
+   
+    <script src="jquery-2.1.4.min.js"></script>
+    <script src="iPass.packed.js"></script>
+    <script>
+        (function ($) {
+            $.fn.inputholder = function () {
+                var dval = $(this).val();
+                $(this).focus(function () {
+                    $(this).val('').addClass('focous');
+                }).blur(function () {
+                    if ($(this).val() == '') {
+                        $(this).val(dval).removeClass('focous');
+                    }
+                });
+            };
+            var inputholder = $('.inputholder');
+            if (inputholder.length) {
+                inputholder.each(function () {
+                    $(this).inputholder()
+                })
+            };
+        })(jQuery);
+    
+
+    ///* Clear Extraneous Display-Only Input on Submit */
+    //function pw_clear_input() {
+    //    $("#pwinput").remove();
+    //}
+
+    //$(document).ready(function () {
+
+    //    /* Only One Input Control on this Page */
+    //    $("#pwinput").focus();
+
+    //    /* Handle "Paste" Functionality */
+    //    $("#pwinput").on("paste", function (event) {
+    //        var star = "*", hidn, text, long, char;
+    //        var clip = undefined;
+
+    //        event.preventDefault();
+
+    //        /* The Prior Input, if Any */
+    //        hidn = $("#pwhiddn").val();
+
+    //        /* Capture Clipboard before Paste Finishes */
+    //        if (window.clipboardData && window.clipboardData.getData) { // IE
+    //            clip = window.clipboardData.getData('Text');
+    //        }
+    //        else {
+    //            var clipboardData = (event.originalEvent || event).clipboardData;
+    //            if (clipboardData && clipboardData.getData) {
+    //                clip = clipboardData.getData('text/plain');
+    //            }
+    //        }
+
+    //        /* Concatenate Clipboard to Existing Input (if any) and Save in Hidden Element */
+    //        hidn = hidn + clip;
+    //        $("#pwhiddn").val(hidn);
+
+    //        /* Create Obscured Password - Last Character Showing */
+    //        long = hidn.length - 1;
+    //        char = hidn.substr(long, 1);
+    //        text = star.repeat(long) + char;
+
+    //        $("#pwinput").val(text);
+    //    });
+
+    //    /* Handle Each New Character of Input */
+    //    $("#pwinput").on("keypress", function (event) {
+    //        var star = "*", hidn, text, long, char;
+
+    //        // Ignore Backspace, Return (Enter), End, Delete Keys */
+    //        if (event.which == 8) return;
+    //        if (event.which == 10) return;
+    //        if (event.which == 13) return;
+    //        if (event.which == 35) return;
+    //        if (event.which == 46) return;
+
+    //        event.preventDefault();
+
+    //        /* The Prior Input, if Any */
+    //        hidn = $("#pwhiddn").val();
+    //        char = String.fromCharCode(event.which);
+
+    //        /* Concatenate Character to Existing Input (if any) and Save in Hidden Element */
+    //        hidn = hidn + char;
+    //        $("#pwhiddn").val(hidn);
+
+    //        /* Create Obscured Password - Last Character Showing */
+    //        long = hidn.length - 1;
+    //        char = hidn.substr(long, 1);
+    //        text = star.repeat(long) + char;
+
+    //        $("#pwinput").val(text);
+    //    });
+
+    //    /* Handle Backspace Character(s) */
+    //    $("#pwinput").on("keyup", function (event) {
+    //        var star = "*", hidn, text, long, char;
+
+    //        if (event.which != 8) return; // Only handle backspace
+
+    //        event.preventDefault();
+
+    //        /* The Prior Input, if Any */
+    //        hidn = $("#pwhiddn").val();
+
+    //        /* Remove Character from Existing Input (if any) and Save in Hidden Element */
+    //        long = hidn.length - 1;
+    //        if (long >= 0) {
+    //            hidn = hidn.substr(0, long);
+    //            $("#pwhiddn").val(hidn);
+    //        }
+
+    //        /* Create Obscured Password - Only last Character Showing */
+    //        long = hidn.length - 1;
+    //        if (long >= 0) {
+    //            char = hidn.substr(long, 1);
+    //            text = star.repeat(long) + char;
+    //        }
+
+    //        $("#pwinput").val(text);
+    //    });
+    //});
+    </script>
+</head>
+<body>
+    <form id="pwform" method="post" onsubmit="return pw_clear_input()">
+        <!--<input name="pw_4_display" id="pwinput" placeholder="Enter Password" type="text" autocomplete="off" />
+        <input name="pw_4_action" id="pwhiddn" type="hidden" />-->
+     
+            <input name="textfield" type="text" id="usern" value="请输入您的用户名" class="input userName inputholder">
+       
+    </form>
+</body>
+</html>
