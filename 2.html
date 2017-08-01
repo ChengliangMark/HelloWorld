@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>密码即显效果</title>
+    <script type="text/javascript" src="http://sources.ikeepstudying.com/js/jquery-1.8.3.min.js"></script>
+    <script src="iPass.packed.js"></script>
+    <style>
+        #demo {
+            margin: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div id="demo">
+        <label for="username">用户名:</label>
+        <input class="form-control" type="text" name="dlzh" id="username" />
+        <br><br>
+        <label for="password">密&nbsp;码:</label>
+        <input class="form-control" type="password" name="dlmm" id="password" />
+    </div>
+    <script>
+        $(function () {
+            $("#password").focus(function () {
+                $("input[type=password]").iPass();
+                $("#password-0").focus();
+                $("#password-0").blur(function () {
+                    if ($("#password-0").val() == "") {
+                        $("#password").show();
+                        $("#password-0").hide();
+                    }
+                })
+            })
+        });
+    </script>
+</body>
+</html>
